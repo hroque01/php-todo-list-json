@@ -29,6 +29,11 @@ export default {
                     this.toDoList = data;
                 })
 
+        },
+        createNewTask(e) {
+            e.preventDefault();
+
+            const newTodoText = this.newTodoText;
         }
     },
     mounted() {
@@ -41,6 +46,7 @@ export default {
     <ul>
         <li v-for="(toDoLem, i) in toDoList" key="'i'"> {{ toDoLem.text }}</li>
     </ul>
+    <form @submit="createNewTask"></form>
 </template>
 
 <style scoped>
