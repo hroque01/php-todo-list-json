@@ -8,7 +8,7 @@ export default {
     data() {
         return {
             toDoList: [],
-            newToDoText: ""
+            newTodoText: ""
         }
     },
     methods: {
@@ -30,10 +30,29 @@ export default {
                 })
 
         },
+
+        //creamo un nuovo metodo con il prevent default
         createNewTask(e) {
             e.preventDefault();
 
+            // richiamo al variante e creamo dei paramentri
             const newTodoText = this.newTodoText;
+
+            // il parametro sarà che inseriremo nell'array "text: newTodoText"
+            const params = {
+                params: {
+                    "text": newTodoText
+                }
+            };
+
+            // richiamo l'API aggiungendo i parametri
+            axios.get(API_URL + "api_create_new_task.php", params)
+                .then(() => {
+
+                    // con questo richiamo, quando scriveremo lla nuova task si resetta completamente l'input text
+                    this.newTodoText = "";
+                    this.getAllData();
+                })
         }
     },
     mounted() {
@@ -46,7 +65,10 @@ export default {
     <ul>
         <li v-for="(toDoLem, i) in toDoList" key="'i'"> {{ toDoLem.text }}</li>
     </ul>
-    <form @submit="createNewTask"></form>
+    <form @submit="createNewTask">
+        <input type="text" name="text" v-model="newTodoText">
+        <input type="submit" value="Create New Task">
+    </form>
 </template>
 
 <style scoped>

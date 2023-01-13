@@ -17,7 +17,7 @@ $todoList = json_decode($jsonTodoList);
 //inserisco nell'array
 $todoList[] = [
     "text" => $text,
-    "complleted" => false
+    "completed" => false
 ];
 
 // implimentiamo il nuovo array nel todolist di todo.json
