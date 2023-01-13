@@ -65,8 +65,11 @@ export default {
     <ul>
         <li v-for="(toDoLem, i) in toDoList" key="'i'"> {{ toDoLem.text }}</li>
     </ul>
-    <form @submit="createNewTask">
-        <input type="text" name="text" v-model="newTodoText">
+
+    <!-- creo un form che richiama newTodoText, creo un collegamento -->
+
+    <form @submit="createNewTask"> <!-- collegamento con submit della fuction -->
+        <input type="text" name="text" v-model="newTodoText"> <!-- collegamento -->
         <input type="submit" value="Create New Task">
     </form>
 </template>
