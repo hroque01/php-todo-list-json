@@ -5,6 +5,12 @@ const API_URL = 'http://localhost:8888/' //creamo una costate con il nostro serv
 
 export default {
     name: 'TodoList',
+    data() {
+        return {
+            toDoList: [],
+            newToDoText: ""
+        }
+    },
     methods: {
 
         getAllData() {
@@ -17,7 +23,10 @@ export default {
                     const data = res.data;
 
                     //per verificare la connessione con file php facciamo un console log
-                    console.log(data)
+                    // console.log(data)
+
+                    // stampiamo todolist in vue 
+                    this.toDoList = data;
                 })
 
         }
@@ -29,7 +38,9 @@ export default {
 </script>
 
 <template>
-    <h1>ciao</h1>
+    <ul>
+        <li v-for="(toDoLem, i) in toDoList" key="'i'"> {{ toDoLem.text }}</li>
+    </ul>
 </template>
 
 <style scoped>
