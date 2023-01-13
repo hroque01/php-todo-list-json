@@ -5,4 +5,5 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 
 header('Content-Type: application/json');
 
-echo "hello world";
+$jsonTodoList = file_get_contents("todo.json");
+echo $jsonTodoList;
